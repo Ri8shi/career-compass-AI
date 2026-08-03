@@ -1,0 +1,3 @@
+(02-03)/08/26 {
+    planing and finalising project techstack, structure and architecure
+}
