@@ -1,0 +1,26 @@
+{
+  "name": "career-compass-ai",
+  "version": "1.0.0",
+  "description": "AI-powered career guidance platform — skill-gap analysis, learning roadmaps, and ATS optimization powered by Groq/Llama 3.3",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": ["career", "resume", "ai", "groq", "llama", "skill-gap"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "groq-sdk": "^0.12.0",
+    "mammoth": "^1.8.0",
+    "multer": "^1.4.5-lts.1",
+    "pdf-parse": "^1.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
