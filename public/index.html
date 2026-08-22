@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Career Compass AI AI-Powered Career Guidance</title>
+  <meta name="description"
+    content="Upload your resume, get deep skill-gap analysis, personalized learning roadmaps, ATS optimization tips, and career path suggestions — powered by AI." />
+  <meta property="og:title" content="Career Compass AI" />
+  <meta property="og:description"
+    content="AI-powered career guidance platform for skill-gap analysis and learning roadmaps." />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+  <!-- ═══════════════════════ ANIMATED BACKGROUND ═══════════════════════ -->
+  <div class="bg-mesh" aria-hidden="true">
+    <div class="mesh-orb mesh-orb--1"></div>
+    <div class="mesh-orb mesh-orb--2"></div>
+    <div class="mesh-orb mesh-orb--3"></div>
+    <div class="mesh-orb mesh-orb--4"></div>
+  </div>
+
+  <!-- ═══════════════════════ HEADER ═══════════════════════ -->
+  <header class="header" id="header">
+    <div class="header__logo">
+      <div class="header__icon">
+        <i data-lucide="compass" class="header__icon-svg"></i>
+      </div>
+      <div>
+        <h1 class="header__title">Career Compass <span class="header__title-ai">AI</span></h1>
+        <p class="header__subtitle">Powered by Llama 3.3 · Groq</p>
+      </div>
+    </div>
+    <nav class="header__nav" id="headerNav">
+      <button class="btn btn--ghost" id="btnNewAnalysis" style="display: none;">
+        <i data-lucide="plus-circle"></i>
+        New Analysis
+      </button>
+    </nav>
+  </header>
+
+  <!-- ═══════════════════════ UPLOAD SECTION ═══════════════════════ -->
+  <main class="main" id="mainContent">
+    <section class="upload-section" id="uploadSection">
+      <!-- Hero -->
+      <div class="hero">
+        <div class="hero__badge">
+          <i data-lucide="sparkles"></i>
+          <span>AI-Powered Career Analysis</span>
+        </div>
+        <h2 class="hero__title">
+          Navigate Your Career
+          <span class="hero__title-gradient">With Precision</span>
+        </h2>
+        <p class="hero__description">
+          Upload your resume, choose your target role, and get an in-depth analysis with skill-gap insights, a
+          personalized learning roadmap, ATS optimization tips, and career path suggestions.
+        </p>
+      </div>
+
+      <!-- Upload Card -->
+      <div class="upload-card glass-card">
+        <form id="analyzeForm" class="upload-form" enctype="multipart/form-data">
+          <!-- Drop Zone -->
+          <div class="drop-zone" id="dropZone">
+            <div class="drop-zone__icon">
+              <i data-lucide="upload-cloud"></i>
+            </div>
+            <p class="drop-zone__text">
+              <strong>Drag & drop your resume</strong> or
+              <button type="button" class="drop-zone__browse" id="browseBtn">browse files</button>
+            </p>
+            <p class="drop-zone__hint">PDF or DOCX · Max 5 MB</p>
+            <input type="file" id="fileInput" name="resume" accept=".pdf,.docx" class="drop-zone__input" />
+          </div>
+
+          <!-- File Preview -->
+          <div class="file-preview" id="filePreview" style="display: none;">
+            <div class="file-preview__info">
+              <i data-lucide="file-text" class="file-preview__icon"></i>
+              <div>
+                <p class="file-preview__name" id="fileName"></p>
+                <p class="file-preview__size" id="fileSize"></p>
+              </div>
+            </div>
+            <button type="button" class="file-preview__remove" id="removeFile">
+              <i data-lucide="x"></i>
+            </button>
+          </div>
+
+          <!-- Target Role -->
+          <div class="form-group">
+            <label for="targetRole" class="form-label">
+              <i data-lucide="target"></i>
+              Target Job Role
+            </label>
+            <input type="text" id="targetRole" name="targetRole" class="form-input"
+              placeholder="e.g., Frontend Developer, Data Scientist, Product Manager..." required autocomplete="off" />
+          </div>
+
+          <!-- Job Description (Optional) -->
+          <div class="form-group">
+            <label for="jobDescription" class="form-label">
+              <i data-lucide="briefcase"></i>
+              Job Description
+              <span class="form-label__optional">(optional)</span>
+            </label>
+            <textarea id="jobDescription" name="jobDescription" class="form-input form-textarea"
+              placeholder="Paste a specific job description for targeted analysis..." rows="4"></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn--primary btn--lg" id="submitBtn">
+            <i data-lucide="zap"></i>
+            <span>Analyze My Career</span>
+            <div class="btn__loader" id="btnLoader" style="display: none;">
+              <div class="spinner"></div>
+            </div>
+          </button>
+        </form>
+      </div>
+
+      <!-- Features Grid -->
+      <div class="features-grid">
+        <div class="feature-card glass-card">
+          <div class="feature-card__icon feature-card__icon--purple">
+            <i data-lucide="bar-chart-3"></i>
+          </div>
+          <h3 class="feature-card__title">Skill Gap Analysis</h3>
+          <p class="feature-card__text">Identify matched, missing, and bonus skills with priority rankings</p>
+        </div>
+        <div class="feature-card glass-card">
+          <div class="feature-card__icon feature-card__icon--blue">
+            <i data-lucide="map"></i>
+          </div>
+          <h3 class="feature-card__title">Learning Roadmap</h3>
+          <p class="feature-card__text">Step-by-step plan with curated resources and timelines</p>
+        </div>
+        <div class="feature-card glass-card">
+          <div class="feature-card__icon feature-card__icon--green">
+            <i data-lucide="scan-search"></i>
+          </div>
+          <h3 class="feature-card__title">ATS Optimization</h3>
+          <p class="feature-card__text">Beat applicant tracking systems with targeted keyword tips</p>
+        </div>
+        <div class="feature-card glass-card">
+          <div class="feature-card__icon feature-card__icon--amber">
+            <i data-lucide="route"></i>
+          </div>
+          <h3 class="feature-card__title">Career Paths</h3>
+          <p class="feature-card__text">Discover alternative roles and progression trajectories</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════ LOADING SECTION ═══════════════════════ -->
+    <section class="loading-section" id="loadingSection" style="display: none;">
+      <div class="loading-card glass-card">
+        <div class="loading-animation">
+          <div class="loading-orbit">
+            <div class="loading-orbit__ring loading-orbit__ring--1"></div>
+            <div class="loading-orbit__ring loading-orbit__ring--2"></div>
+            <div class="loading-orbit__ring loading-orbit__ring--3"></div>
+            <div class="loading-orbit__core">
+              <i data-lucide="brain"></i>
+            </div>
+          </div>
+        </div>
+        <h3 class="loading-card__title">Analyzing Your Resume</h3>
+        <p class="loading-card__text" id="loadingText">Extracting resume content...</p>
+        <div class="loading-progress">
+          <div class="loading-progress__bar" id="loadingBar"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════ DASHBOARD SECTION ═══════════════════════ -->
+    <section class="dashboard-section" id="dashboardSection" style="display: none;">
+
+      <!-- Dashboard Header -->
+      <div class="dash-header">
+        <div>
+          <h2 class="dash-header__title">Career Analysis Report</h2>
+          <p class="dash-header__meta" id="dashMeta"></p>
+        </div>
+        <div class="dash-header__actions">
+          <button class="btn btn--ghost" id="btnExportPdf">
+            <i data-lucide="download"></i>
+            Export PDF
+          </button>
+          <button class="btn btn--ghost" id="btnCopyRoadmap">
+            <i data-lucide="copy"></i>
+            Copy Roadmap
+          </button>
+        </div>
+      </div>
+
+      <!-- Summary Banner -->
+      <div class="summary-banner glass-card" id="summaryBanner">
+        <p id="summaryText"></p>
+      </div>
+
+      <!-- Score Cards Row -->
+      <div class="score-row">
+        <!-- Overall Score -->
+        <div class="score-main glass-card">
+          <h3 class="score-main__label">Overall Readiness</h3>
+          <div class="score-circle" id="overallScoreCircle">
+            <svg viewBox="0 0 120 120" class="score-circle__svg">
+              <circle cx="60" cy="60" r="52" class="score-circle__bg" />
+              <circle cx="60" cy="60" r="52" class="score-circle__fill" id="scoreCircleFill" />
+            </svg>
+            <span class="score-circle__value" id="overallScoreValue">0</span>
+          </div>
+        </div>
+
+        <!-- Sub Scores -->
+        <div class="sub-scores glass-card">
+          <h3 class="sub-scores__title">Score Breakdown</h3>
+          <div class="sub-scores__grid">
+            <div class="sub-score-item">
+              <div class="sub-score-item__header">
+                <i data-lucide="code-2"></i>
+                <span>Skills Match</span>
+              </div>
+              <div class="sub-score-bar">
+                <div class="sub-score-bar__fill" id="barSkills" data-score="0"></div>
+              </div>
+              <span class="sub-score-item__value" id="valSkills">0</span>
+            </div>
+            <div class="sub-score-item">
+              <div class="sub-score-item__header">
+                <i data-lucide="briefcase"></i>
+                <span>Experience</span>
+              </div>
+              <div class="sub-score-bar">
+                <div class="sub-score-bar__fill" id="barExperience" data-score="0"></div>
+              </div>
+              <span class="sub-score-item__value" id="valExperience">0</span>
+            </div>
+            <div class="sub-score-item">
+              <div class="sub-score-item__header">
+                <i data-lucide="graduation-cap"></i>
+                <span>Education</span>
+              </div>
+              <div class="sub-score-bar">
+                <div class="sub-score-bar__fill" id="barEducation" data-score="0"></div>
+              </div>
+              <span class="sub-score-item__value" id="valEducation">0</span>
+            </div>
+            <div class="sub-score-item">
+              <div class="sub-score-item__header">
+                <i data-lucide="scan-search"></i>
+                <span>ATS Compat.</span>
+              </div>
+              <div class="sub-score-bar">
+                <div class="sub-score-bar__fill" id="barAts" data-score="0"></div>
+              </div>
+              <span class="sub-score-item__value" id="valAts">0</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Radar Chart -->
+        <div class="chart-card glass-card">
+          <h3 class="chart-card__title">Skills Radar</h3>
+          <canvas id="radarChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Skills Section -->
+      <div class="skills-row">
+        <div class="skill-card glass-card">
+          <div class="skill-card__header skill-card__header--matched">
+            <i data-lucide="check-circle-2"></i>
+            <h3>Matched Skills</h3>
+            <span class="skill-card__count" id="matchedCount">0</span>
+          </div>
+          <div class="skill-tags" id="matchedSkills"></div>
+        </div>
+
+        <div class="skill-card glass-card">
+          <div class="skill-card__header skill-card__header--missing">
+            <i data-lucide="alert-triangle"></i>
+            <h3>Missing Skills</h3>
+            <span class="skill-card__count" id="missingCount">0</span>
+          </div>
+          <div class="missing-skills-list" id="missingSkills"></div>
+        </div>
+
+        <div class="skill-card glass-card">
+          <div class="skill-card__header skill-card__header--bonus">
+            <i data-lucide="star"></i>
+            <h3>Bonus Skills</h3>
+            <span class="skill-card__count" id="bonusCount">0</span>
+          </div>
+          <div class="skill-tags" id="bonusSkills"></div>
+        </div>
+      </div>
+
+      <!-- Roadmap Section -->
+      <div class="roadmap-section glass-card">
+        <div class="roadmap-header">
+          <i data-lucide="map"></i>
+          <h3>Personalized Learning Roadmap</h3>
+        </div>
+        <div class="roadmap-timeline" id="roadmapTimeline"></div>
+      </div>
+
+      <!-- ATS Tips + Career Paths Row -->
+      <div class="bottom-row">
+        <div class="ats-card glass-card">
+          <div class="ats-header">
+            <i data-lucide="shield-check"></i>
+            <h3>ATS Optimization Tips</h3>
+          </div>
+          <ul class="ats-list" id="atsTipsList"></ul>
+        </div>
+
+        <div class="career-card glass-card">
+          <div class="career-header">
+            <i data-lucide="route"></i>
+            <h3>Alternative Career Paths</h3>
+          </div>
+          <div class="career-paths" id="careerPaths"></div>
+        </div>
+      </div>
+
+      <!-- Resume Improvements -->
+      <div class="improvements-card glass-card">
+        <div class="improvements-header">
+          <i data-lucide="pen-tool"></i>
+          <h3>Resume Improvements</h3>
+        </div>
+        <ul class="improvements-list" id="improvementsList"></ul>
+      </div>
+
+    </section>
+
+    <!-- ═══════════════════════ ERROR SECTION ═══════════════════════ -->
+    <section class="error-section" id="errorSection" style="display: none;">
+      <div class="error-card glass-card">
+        <div class="error-card__icon">
+          <i data-lucide="alert-octagon"></i>
+        </div>
+        <h3 class="error-card__title">Analysis Failed</h3>
+        <p class="error-card__message" id="errorMessage"></p>
+        <button class="btn btn--primary" id="btnRetry">
+          <i data-lucide="refresh-cw"></i>
+          Try Again
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <p>&copy; 2026 Career Compass AI · Powered by Groq &amp; Llama 3.3</p>
+  </footer>
+
+  <!-- ═══════════════════════ SCRIPTS ═══════════════════════ -->
+  <script src="/js/charts.js"></script>
+  <script src="/js/dashboard.js"></script>
+  <script src="/js/upload.js"></script>
+  <script src="/js/export.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+
+</html>
