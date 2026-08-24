@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 520" preserveAspectRatio="xMidYMax slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f5f0e8"/>
+      <stop offset="60%" stop-color="#ede5d5"/>
+      <stop offset="100%" stop-color="#ddd5c0"/>
+    </linearGradient>
+    <linearGradient id="hillFar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8b9a6b"/>
+      <stop offset="100%" stop-color="#7a8a5c"/>
+    </linearGradient>
+    <linearGradient id="hillMid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a3b07a"/>
+      <stop offset="100%" stop-color="#8fa06a"/>
+    </linearGradient>
+    <linearGradient id="hillNear" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c0c9a0"/>
+      <stop offset="100%" stop-color="#b0ba8e"/>
+    </linearGradient>
+    <linearGradient id="hillFront" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d4dbb5"/>
+      <stop offset="100%" stop-color="#c8d1a8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="1920" height="520" fill="url(#sky)"/>
+
+  <!-- Distant mountains -->
+  <path d="M0 340 Q200 260 400 310 Q600 250 800 290 Q1000 230 1200 280 Q1400 240 1600 300 Q1800 260 1920 290 L1920 520 L0 520Z" fill="url(#hillFar)" opacity="0.6"/>
+
+  <!-- Mid hills -->
+  <path d="M0 380 Q150 310 350 350 Q550 300 750 340 Q950 280 1150 330 Q1350 290 1550 350 Q1750 310 1920 340 L1920 520 L0 520Z" fill="url(#hillMid)" opacity="0.7"/>
+
+  <!-- Near hills -->
+  <path d="M0 410 Q200 360 450 390 Q650 340 850 380 Q1050 350 1250 370 Q1450 340 1650 380 Q1850 360 1920 375 L1920 520 L0 520Z" fill="url(#hillNear)" opacity="0.8"/>
+
+  <!-- Front hills -->
+  <path d="M0 450 Q250 410 500 430 Q750 400 1000 420 Q1250 400 1500 430 Q1750 410 1920 425 L1920 520 L0 520Z" fill="url(#hillFront)"/>
+
+  <!-- Pine trees on distant hills -->
+  <g fill="#6b7a52" opacity="0.5">
+    <!-- Group 1 -->
+    <polygon points="320,305 325,280 330,305"/>
+    <polygon points="340,310 346,282 352,310"/>
+    <polygon points="355,308 360,285 365,308"/>
+
+    <!-- Group 2 -->
+    <polygon points="780,288 786,260 792,288"/>
+    <polygon points="800,292 806,268 812,292"/>
+    <polygon points="815,290 820,270 825,290"/>
+
+    <!-- Group 3 -->
+    <polygon points="1180,278 1186,250 1192,278"/>
+    <polygon points="1200,282 1207,255 1214,282"/>
+
+    <!-- Group 4 -->
+    <polygon points="1580,298 1586,272 1592,298"/>
+    <polygon points="1600,302 1606,278 1612,302"/>
+    <polygon points="1618,300 1623,280 1628,300"/>
+  </g>
+
+  <!-- Pine trees on mid hills -->
+  <g fill="#7a8a5c" opacity="0.6">
+    <polygon points="180,345 186,318 192,345"/>
+    <polygon points="200,350 207,320 214,350"/>
+    <polygon points="500,340 507,312 514,340"/>
+    <polygon points="520,345 527,315 534,345"/>
+    <polygon points="530,342 535,320 540,342"/>
+    <polygon points="900,335 908,305 916,335"/>
+    <polygon points="920,340 927,312 934,340"/>
+    <polygon points="1350,330 1358,300 1366,330"/>
+    <polygon points="1370,335 1377,308 1384,335"/>
+    <polygon points="1750,340 1758,312 1766,340"/>
+    <polygon points="1770,345 1776,320 1782,345"/>
+  </g>
+
+  <!-- Pine trees on near hills -->
+  <g fill="#8a9a6a" opacity="0.7">
+    <polygon points="100,400 108,370 116,400"/>
+    <polygon points="120,405 128,372 136,405"/>
+    <polygon points="650,375 660,340 670,375"/>
+    <polygon points="680,380 688,350 696,380"/>
+    <polygon points="1100,368 1110,335 1120,368"/>
+    <polygon points="1130,372 1138,342 1146,372"/>
+    <polygon points="1500,375 1510,342 1520,375"/>
+    <polygon points="1530,378 1538,348 1546,378"/>
+  </g>
+
+  <!-- Floating career icons (subtle, decorative) -->
+  <g opacity="0.25" fill="none" stroke="#6b7a52" stroke-width="2">
+    <!-- Compass icon -->
+    <circle cx="1580" cy="140" r="20"/>
+    <circle cx="1580" cy="140" r="4" fill="#6b7a52"/>
+    <line x1="1580" y1="120" x2="1580" y2="128"/>
+    <line x1="1580" y1="152" x2="1580" y2="160"/>
+    <line x1="1560" y1="140" x2="1568" y2="140"/>
+    <line x1="1592" y1="140" x2="1600" y2="140"/>
+
+    <!-- Chart icon -->
+    <rect x="1690" y="190" width="36" height="28" rx="3"/>
+    <line x1="1700" y1="212" x2="1700" y2="202"/>
+    <line x1="1708" y1="212" x2="1708" y2="198"/>
+    <line x1="1716" y1="212" x2="1716" y2="205"/>
+
+    <!-- Briefcase icon -->
+    <rect x="1640" cy="90" y="250" width="30" height="22" rx="3"/>
+    <path d="M1650 250 L1650 246 Q1650 242 1654 242 L1662 242 Q1666 242 1666 246 L1666 250"/>
+
+    <!-- Graduation cap -->
+    <polygon points="1720,120 1740,110 1760,120 1740,130" fill="#6b7a52" opacity="0.4"/>
+    <line x1="1740" y1="120" x2="1740" y2="140"/>
+    <line x1="1758" y1="121" x2="1758" y2="132"/>
+  </g>
+
+  <!-- Subtle cloud shapes -->
+  <g fill="white" opacity="0.3">
+    <ellipse cx="300" cy="150" rx="60" ry="20"/>
+    <ellipse cx="280" cy="145" rx="40" ry="18"/>
+    <ellipse cx="330" cy="148" rx="35" ry="15"/>
+
+    <ellipse cx="1100" cy="120" rx="70" ry="22"/>
+    <ellipse cx="1080" cy="115" rx="45" ry="18"/>
+    <ellipse cx="1130" cy="118" rx="40" ry="16"/>
+
+    <ellipse cx="700" cy="100" rx="50" ry="16"/>
+    <ellipse cx="685" cy="96" rx="35" ry="14"/>
+    <ellipse cx="720" cy="98" rx="30" ry="12"/>
+  </g>
+</svg>
