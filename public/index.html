@@ -4,41 +4,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Career Compass AI AI-Powered Career Guidance</title>
+  <title>Career Compass AI</title>
   <meta name="description"
-    content="Upload your resume, get deep skill-gap analysis, personalized learning roadmaps, ATS optimization tips, and career path suggestions — powered by AI." />
+    content="Upload your resume, get deep skill gap analysis, personalized learning roadmaps, ATS optimization tips, and career path suggestions powered by AI." />
   <meta property="og:title" content="Career Compass AI" />
   <meta property="og:description"
-    content="AI-powered career guidance platform for skill-gap analysis and learning roadmaps." />
+    content="AI-powered career guidance platform for skill gap analysis and learning roadmaps." />
   <meta property="og:type" content="website" />
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
     rel="stylesheet" />
 
-  <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
-
-  <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
-  <!-- Styles -->
   <link rel="stylesheet" href="/css/style.css" />
 </head>
 
 <body>
-  <!-- ═══════════════════════ ANIMATED BACKGROUND ═══════════════════════ -->
-  <div class="bg-mesh" aria-hidden="true">
-    <div class="mesh-orb mesh-orb--1"></div>
-    <div class="mesh-orb mesh-orb--2"></div>
-    <div class="mesh-orb mesh-orb--3"></div>
-    <div class="mesh-orb mesh-orb--4"></div>
-  </div>
-
-  <!-- ═══════════════════════ HEADER ═══════════════════════ -->
   <header class="header" id="header">
     <div class="header__logo">
       <div class="header__icon">
@@ -60,113 +46,137 @@
   <!-- ═══════════════════════ UPLOAD SECTION ═══════════════════════ -->
   <main class="main" id="mainContent">
     <section class="upload-section" id="uploadSection">
-      <!-- Hero -->
-      <div class="hero">
-        <div class="hero__badge">
-          <i data-lucide="sparkles"></i>
-          <span>AI-Powered Career Analysis</span>
+      <!-- Hero with Background -->
+      <div class="hero-banner">
+        <div class="hero-banner__bg">
+          <img src="/images/bg1.png" alt="" class="hero-banner__img" aria-hidden="true" />
         </div>
-        <h2 class="hero__title">
-          Navigate Your Career
-          <span class="hero__title-gradient">With Precision</span>
-        </h2>
-        <p class="hero__description">
-          Upload your resume, choose your target role, and get an in-depth analysis with skill-gap insights, a
-          personalized learning roadmap, ATS optimization tips, and career path suggestions.
-        </p>
+        <div class="hero-banner__content">
+          <h2 class="hero__title">
+            Navigate your career
+            <span class="hero__title-gradient">with clarity and confidence.</span>
+          </h2>
+          <p class="hero__description">
+            Upload your resume, choose your target role, and get a personalized
+            analysis with actionable insights.
+          </p>
+          <div class="hero__trust-badges">
+            <span class="trust-badge"><i data-lucide="shield-check"></i> Secure & Private</span>
+            <span class="trust-badge"><i data-lucide="sparkles"></i> AI-Powered Insights</span>
+            <span class="trust-badge"><i data-lucide="user-check"></i> Personalized for You</span>
+          </div>
+        </div>
       </div>
 
-      <!-- Upload Card -->
+      <!-- Upload Card — Horizontal Layout -->
       <div class="upload-card glass-card">
-        <form id="analyzeForm" class="upload-form" enctype="multipart/form-data">
-          <!-- Drop Zone -->
-          <div class="drop-zone" id="dropZone">
-            <div class="drop-zone__icon">
-              <i data-lucide="upload-cloud"></i>
-            </div>
-            <p class="drop-zone__text">
-              <strong>Drag & drop your resume</strong> or
-              <button type="button" class="drop-zone__browse" id="browseBtn">browse files</button>
-            </p>
-            <p class="drop-zone__hint">PDF or DOCX · Max 5 MB</p>
-            <input type="file" id="fileInput" name="resume" accept=".pdf,.docx" class="drop-zone__input" />
-          </div>
-
-          <!-- File Preview -->
-          <div class="file-preview" id="filePreview" style="display: none;">
-            <div class="file-preview__info">
-              <i data-lucide="file-text" class="file-preview__icon"></i>
-              <div>
-                <p class="file-preview__name" id="fileName"></p>
-                <p class="file-preview__size" id="fileSize"></p>
+        <form id="analyzeForm" class="upload-form upload-form--horizontal" enctype="multipart/form-data">
+          <!-- Left: File Upload -->
+          <div class="upload-form__left">
+            <h3 class="upload-form__section-title">
+              <i data-lucide="file-text"></i>
+              Upload Your Resume
+            </h3>
+            <!-- Drop Zone -->
+            <div class="drop-zone" id="dropZone">
+              <div class="drop-zone__icon">
+                <i data-lucide="upload-cloud"></i>
               </div>
+              <p class="drop-zone__text">
+                <strong>Drag & drop your resume here</strong><br>
+                or <button type="button" class="drop-zone__browse" id="browseBtn">browse files</button>
+              </p>
+              <p class="drop-zone__hint">PDF or DOCX · Max 5 MB</p>
+              <input type="file" id="fileInput" name="resume" accept=".pdf,.docx" class="drop-zone__input" />
             </div>
-            <button type="button" class="file-preview__remove" id="removeFile">
-              <i data-lucide="x"></i>
-            </button>
+
+            <!-- File Preview -->
+            <div class="file-preview" id="filePreview" style="display: none;">
+              <div class="file-preview__info">
+                <i data-lucide="file-text" class="file-preview__icon"></i>
+                <div>
+                  <p class="file-preview__name" id="fileName"></p>
+                  <p class="file-preview__size" id="fileSize"></p>
+                </div>
+              </div>
+              <button type="button" class="file-preview__remove" id="removeFile">
+                <i data-lucide="x"></i>
+              </button>
+            </div>
           </div>
 
-          <!-- Target Role -->
-          <div class="form-group">
-            <label for="targetRole" class="form-label">
+          <!-- Vertical Divider -->
+          <div class="upload-form__divider"></div>
+
+          <!-- Right: Target Role + Submit -->
+          <div class="upload-form__right">
+            <h3 class="upload-form__section-title">
               <i data-lucide="target"></i>
               Target Job Role
-            </label>
-            <input type="text" id="targetRole" name="targetRole" class="form-input"
-              placeholder="e.g., Frontend Developer, Data Scientist, Product Manager..." required autocomplete="off" />
-          </div>
+            </h3>
 
-          <!-- Job Description (Optional) -->
-          <div class="form-group">
-            <label for="jobDescription" class="form-label">
-              <i data-lucide="briefcase"></i>
-              Job Description
-              <span class="form-label__optional">(optional)</span>
-            </label>
-            <textarea id="jobDescription" name="jobDescription" class="form-input form-textarea"
-              placeholder="Paste a specific job description for targeted analysis..." rows="4"></textarea>
-          </div>
-
-          <!-- Submit Button -->
-          <button type="submit" class="btn btn--primary btn--lg" id="submitBtn">
-            <i data-lucide="zap"></i>
-            <span>Analyze My Career</span>
-            <div class="btn__loader" id="btnLoader" style="display: none;">
-              <div class="spinner"></div>
+            <!-- Target Role -->
+            <div class="form-group">
+              <input type="text" id="targetRole" name="targetRole" class="form-input"
+                placeholder="e.g., Frontend Developer, Data Scientist, Product Manager..." required
+                autocomplete="off" />
             </div>
-          </button>
+
+            <!-- Job Description (Optional) -->
+            <div class="form-group">
+              <label for="jobDescription" class="form-label">
+                <i data-lucide="briefcase"></i>
+                Job Description
+                <span class="form-label__optional">(optional)</span>
+              </label>
+              <textarea id="jobDescription" name="jobDescription" class="form-input form-textarea"
+                placeholder="Paste a specific job description for targeted analysis..." rows="3"></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn--primary btn--lg" id="submitBtn">
+              <i data-lucide="zap"></i>
+              <span>Analyze My Career</span>
+              <div class="btn__loader" id="btnLoader" style="display: none;">
+                <div class="spinner"></div>
+              </div>
+            </button>
+          </div>
         </form>
       </div>
 
-      <!-- Features Grid -->
-      <div class="features-grid">
-        <div class="feature-card glass-card">
-          <div class="feature-card__icon feature-card__icon--purple">
-            <i data-lucide="bar-chart-3"></i>
+      <!-- Features -->
+      <div class="features-section">
+        <h3 class="features-section__title">What you'll get</h3>
+        <div class="features-grid">
+          <div class="feature-card glass-card">
+            <div class="feature-card__icon feature-card__icon--purple">
+              <i data-lucide="bar-chart-3"></i>
+            </div>
+            <h3 class="feature-card__title">Skill Gap Analysis</h3>
+            <p class="feature-card__text">Identify matched, missing, and bonus skills with priority rankings</p>
           </div>
-          <h3 class="feature-card__title">Skill Gap Analysis</h3>
-          <p class="feature-card__text">Identify matched, missing, and bonus skills with priority rankings</p>
-        </div>
-        <div class="feature-card glass-card">
-          <div class="feature-card__icon feature-card__icon--blue">
-            <i data-lucide="map"></i>
+          <div class="feature-card glass-card">
+            <div class="feature-card__icon feature-card__icon--blue">
+              <i data-lucide="map"></i>
+            </div>
+            <h3 class="feature-card__title">Learning Roadmap</h3>
+            <p class="feature-card__text">Step-by-step plan with curated resources and timelines</p>
           </div>
-          <h3 class="feature-card__title">Learning Roadmap</h3>
-          <p class="feature-card__text">Step-by-step plan with curated resources and timelines</p>
-        </div>
-        <div class="feature-card glass-card">
-          <div class="feature-card__icon feature-card__icon--green">
-            <i data-lucide="scan-search"></i>
+          <div class="feature-card glass-card">
+            <div class="feature-card__icon feature-card__icon--green">
+              <i data-lucide="scan-search"></i>
+            </div>
+            <h3 class="feature-card__title">ATS Optimization</h3>
+            <p class="feature-card__text">Beat applicant tracking systems with targeted keyword tips</p>
           </div>
-          <h3 class="feature-card__title">ATS Optimization</h3>
-          <p class="feature-card__text">Beat applicant tracking systems with targeted keyword tips</p>
-        </div>
-        <div class="feature-card glass-card">
-          <div class="feature-card__icon feature-card__icon--amber">
-            <i data-lucide="route"></i>
+          <div class="feature-card glass-card">
+            <div class="feature-card__icon feature-card__icon--amber">
+              <i data-lucide="route"></i>
+            </div>
+            <h3 class="feature-card__title">Career Paths</h3>
+            <p class="feature-card__text">Discover alternative roles and progression trajectories</p>
           </div>
-          <h3 class="feature-card__title">Career Paths</h3>
-          <p class="feature-card__text">Discover alternative roles and progression trajectories</p>
         </div>
       </div>
     </section>
