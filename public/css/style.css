@@ -1,9 +1,4 @@
-/* ═══════════════════════════════════════════════════════════════
-   Career Compass AI — Clean Minimalist Light Theme
-   Inspired by Apple / Stripe design language
-   ═══════════════════════════════════════════════════════════════ */
 
-/* ─── Reset & Base ─── */
 *,
 *::before,
 *::after {
@@ -13,14 +8,12 @@
 }
 
 :root {
-  /* Backgrounds */
   --bg-deep: #ffffff;
   --bg-page: #f8fafc;
   --bg-surface: #ffffff;
   --bg-surface-hover: #f1f5f9;
   --bg-surface-active: #e2e8f0;
 
-  /* Accents */
   --primary: #2563eb;
   --primary-light: #3b82f6;
   --primary-dark: #1d4ed8;
@@ -28,7 +21,6 @@
   --gradient-primary: linear-gradient(135deg, #2563eb, #3b82f6);
   --gradient-hero: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #60a5fa 100%);
 
-  /* Semantic */
   --success: #059669;
   --success-soft: rgba(5, 150, 105, 0.08);
   --warning: #d97706;
@@ -38,42 +30,35 @@
   --info: #2563eb;
   --info-soft: rgba(37, 99, 235, 0.08);
 
-  /* Text */
   --text-primary: #0f172a;
   --text-secondary: #475569;
   --text-tertiary: #94a3b8;
   --text-inverse: #ffffff;
 
-  /* Borders */
   --border: #e2e8f0;
   --border-hover: #cbd5e1;
   --border-glow: 0 4px 16px rgba(37, 99, 235, 0.10);
   --border-glow-strong: 0 8px 30px rgba(37, 99, 235, 0.12);
 
-  /* Sizing */
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
   --radius-xl: 24px;
   --radius-full: 9999px;
 
-  /* Shadows */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
   --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.10);
 
-  /* Transitions */
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-spring: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
 
-  /* Typography */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
-  /* Layout */
   --max-width: 1280px;
   --header-height: 72px;
 }
@@ -94,7 +79,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -112,12 +96,10 @@ body {
   background: #94a3b8;
 }
 
-/* ─── Background (clean — no animated mesh) ─── */
 .bg-mesh {
   display: none;
 }
 
-/* ─── Card ─── */
 .glass-card {
   background: var(--bg-surface);
   border: 1px solid var(--border);
@@ -131,7 +113,6 @@ body {
   box-shadow: var(--shadow-md);
 }
 
-/* ─── Header ─── */
 .header {
   position: sticky;
   top: 0;
@@ -189,7 +170,6 @@ body {
   text-transform: uppercase;
 }
 
-/* ─── Main Content ─── */
 .main {
   position: relative;
   z-index: 1;
@@ -198,7 +178,6 @@ body {
   padding: 2rem 1.5rem 4rem;
 }
 
-/* ─── Upload Section ─── */
 .upload-section {
   display: flex;
   flex-direction: column;
@@ -217,7 +196,6 @@ body {
   }
 }
 
-/* ─── Hero Banner ─── */
 .hero-banner {
   position: relative;
   border-radius: var(--radius-xl);
@@ -269,7 +247,6 @@ body {
   margin-bottom: 1.25rem;
 }
 
-/* Trust Badges */
 .hero__trust-badges {
   display: flex;
   flex-wrap: wrap;
@@ -291,7 +268,6 @@ body {
   color: #5a7a5a;
 }
 
-/* ─── Upload Card — Horizontal ─── */
 .upload-card {
   width: 100%;
   padding: 2rem;
@@ -333,7 +309,6 @@ body {
   align-self: stretch;
 }
 
-/* Drop Zone */
 .drop-zone {
   display: flex;
   flex-direction: column;
@@ -403,7 +378,6 @@ body {
   display: none;
 }
 
-/* File Preview */
 .file-preview {
   display: flex;
   align-items: center;
@@ -462,7 +436,6 @@ body {
   height: 14px;
 }
 
-/* Form Inputs */
 .form-group {
   display: flex;
   flex-direction: column;
@@ -517,7 +490,6 @@ body {
   min-height: 90px;
 }
 
-/* ─── Buttons ─── */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -581,7 +553,6 @@ body {
   border-color: var(--border-hover);
 }
 
-/* Button Loader */
 .btn__loader {
   position: absolute;
   inset: 0;
@@ -604,7 +575,6 @@ body {
   to { transform: rotate(360deg); }
 }
 
-/* ─── Features Section ─── */
 .features-section {
   width: 100%;
 }
@@ -680,7 +650,6 @@ body {
   line-height: 1.5;
 }
 
-/* ─── Loading Section ─── */
 .loading-section {
   display: flex;
   align-items: center;
@@ -785,7 +754,6 @@ body {
   transition: width 0.5s ease;
 }
 
-/* ─── Dashboard Section ─── */
 .dashboard-section {
   display: flex;
   flex-direction: column;
@@ -793,7 +761,6 @@ body {
   animation: fadeInUp 0.5s ease both;
 }
 
-/* Dashboard Header */
 .dash-header {
   display: flex;
   align-items: center;
@@ -819,7 +786,6 @@ body {
   gap: 0.5rem;
 }
 
-/* Summary Banner */
 .summary-banner {
   padding: 1.25rem 1.5rem;
   border-left: 3px solid var(--primary);
@@ -832,14 +798,12 @@ body {
   font-style: italic;
 }
 
-/* ─── Score Cards ─── */
 .score-row {
   display: grid;
   grid-template-columns: 240px 1fr 280px;
   gap: 1.5rem;
 }
 
-/* Overall Score Circle */
 .score-main {
   padding: 2rem;
   display: flex;
@@ -897,7 +861,6 @@ body {
   color: var(--primary);
 }
 
-/* Sub Scores */
 .sub-scores {
   padding: 1.5rem;
 }
@@ -961,7 +924,6 @@ body {
   text-align: right;
 }
 
-/* Chart Card */
 .chart-card {
   padding: 1.5rem;
 }
@@ -975,7 +937,6 @@ body {
   margin-bottom: 1rem;
 }
 
-/* ─── Skills Section ─── */
 .skills-row {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -1020,7 +981,6 @@ body {
   color: var(--text-secondary);
 }
 
-/* Skill Tags */
 .skill-tags {
   display: flex;
   flex-wrap: wrap;
@@ -1050,7 +1010,6 @@ body {
   border: 1px solid rgba(37, 99, 235, 0.15);
 }
 
-/* Missing Skills List */
 .missing-skills-list {
   display: flex;
   flex-direction: column;
@@ -1113,7 +1072,6 @@ body {
   margin-top: 0.15rem;
 }
 
-/* ─── Roadmap Section ─── */
 .roadmap-section {
   padding: 2rem;
 }
@@ -1262,7 +1220,6 @@ body {
   text-decoration: underline;
 }
 
-/* ─── ATS & Career Paths ─── */
 .bottom-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1297,7 +1254,6 @@ body {
   font-weight: 700;
 }
 
-/* ATS List */
 .ats-list {
   list-style: none;
   display: flex;
@@ -1327,7 +1283,6 @@ body {
   border-radius: 50%;
 }
 
-/* Career Paths */
 .career-paths {
   display: flex;
   flex-direction: column;
@@ -1408,7 +1363,6 @@ body {
   margin-top: 0.25rem;
 }
 
-/* ─── Resume Improvements ─── */
 .improvements-card {
   padding: 1.5rem;
 }
@@ -1459,7 +1413,6 @@ body {
   font-weight: 700;
 }
 
-/* ─── Error Section ─── */
 .error-section {
   display: flex;
   align-items: center;
@@ -1505,7 +1458,6 @@ body {
   margin-bottom: 1.5rem;
 }
 
-/* ─── Footer ─── */
 .footer {
   position: relative;
   z-index: 1;
@@ -1555,7 +1507,6 @@ body {
     padding: 1.5rem 1rem 3rem;
   }
 
-  /* Hero banner mobile */
   .hero-banner {
     min-height: 220px;
   }
@@ -1568,7 +1519,6 @@ body {
     font-size: 1.5rem;
   }
 
-  /* Upload form stacks on mobile */
   .upload-form--horizontal {
     grid-template-columns: 1fr;
     gap: 1.5rem;
@@ -1642,7 +1592,6 @@ body {
   }
 }
 
-/* ─── Utility: Stagger Animation ─── */
 .stagger-1 { animation-delay: 0.05s !important; }
 .stagger-2 { animation-delay: 0.1s !important; }
 .stagger-3 { animation-delay: 0.15s !important; }
