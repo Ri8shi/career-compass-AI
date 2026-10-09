@@ -6,19 +6,18 @@ const ChartManager = (() => {
   let radarChart = null;
 
   const COLORS = {
-    primary: '#2563eb',
-    primaryLight: '#3b82f6',
-    secondary: '#1e40af',
-    success: '#059669',
-    warning: '#d97706',
-    danger: '#dc2626',
-    info: '#2563eb',
-    gridLine: 'rgba(0, 0, 0, 0.06)',
-    text: '#475569',
+    primary: '#6366f1',
+    primaryLight: '#818cf8',
+    secondary: '#8b5cf6',
+    success: '#10b981',
+    warning: '#f59e0b',
+    danger: '#ef4444',
+    info: '#3b82f6',
+    gridLine: 'rgba(255, 255, 255, 0.06)',
+    text: '#94a3b8',
   };
 
-  // Global defaults for light theme
-  function applyDefaults() {
+  function applyDarkDefaults() {
     Chart.defaults.color = COLORS.text;
     Chart.defaults.font.family = "'Inter', sans-serif";
     Chart.defaults.font.size = 11;
@@ -37,7 +36,7 @@ const ChartManager = (() => {
     const canvas = document.getElementById('radarChart');
     if (!canvas) return;
 
-    applyDefaults();
+    applyDarkDefaults();
 
     if (radarChart) {
       radarChart.destroy();
@@ -53,11 +52,11 @@ const ChartManager = (() => {
           {
             label: 'Your Profile',
             data: current,
-            backgroundColor: 'rgba(37, 99, 235, 0.10)',
+            backgroundColor: 'rgba(99, 102, 241, 0.15)',
             borderColor: COLORS.primary,
             borderWidth: 2,
             pointBackgroundColor: COLORS.primary,
-            pointBorderColor: '#ffffff',
+            pointBorderColor: '#0a0a0f',
             pointBorderWidth: 2,
             pointRadius: 4,
             pointHoverRadius: 6,
@@ -65,12 +64,12 @@ const ChartManager = (() => {
           {
             label: 'Target Role',
             data: required,
-            backgroundColor: 'rgba(5, 150, 105, 0.06)',
+            backgroundColor: 'rgba(16, 185, 129, 0.1)',
             borderColor: COLORS.success,
             borderWidth: 2,
             borderDash: [5, 5],
             pointBackgroundColor: COLORS.success,
-            pointBorderColor: '#ffffff',
+            pointBorderColor: '#0a0a0f',
             pointBorderWidth: 2,
             pointRadius: 4,
             pointHoverRadius: 6,
@@ -110,10 +109,8 @@ const ChartManager = (() => {
             },
           },
           tooltip: {
-            backgroundColor: 'rgba(255, 255, 255, 0.95)',
-            titleColor: '#0f172a',
-            bodyColor: '#475569',
-            borderColor: '#e2e8f0',
+            backgroundColor: 'rgba(15, 23, 42, 0.95)',
+            borderColor: 'rgba(255, 255, 255, 0.1)',
             borderWidth: 1,
             cornerRadius: 8,
             padding: 10,
