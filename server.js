@@ -2,8 +2,12 @@ import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
+import cookieParser from 'cookie-parser';
 import { fileURLToPath } from 'url';
 import analyzeRouter from './routes/analyze.js';
+import authRouter from './routes/auth.js';
+import historyRouter from './routes/history.js';
+import { requireAuth } from './middleware/auth.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -12,15 +16,18 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // --------------- Middleware ---------------
-app.use(cors());
+app.use(cors({ credentials: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 // Serve static frontend files
 app.use(express.static(path.join(__dirname, 'public')));
 
 // --------------- API Routes ---------------
 app.use('/api', analyzeRouter);
+app.use('/api/auth', authRouter);
+app.use('/api/history', requireAuth, historyRouter); // Protected
 
 // --------------- Catch-all: serve index.html ---------------
 app.get('*', (_req, res) => {
