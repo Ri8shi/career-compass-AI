@@ -6,6 +6,8 @@ import { fileURLToPath } from 'url';
 import Groq from 'groq-sdk';
 import { extractText } from '../utils/extractText.js';
 import { buildPrompt } from '../utils/groqPrompt.js';
+import { optionalAuth } from '../middleware/auth.js';
+import db from '../db/database.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -54,7 +56,7 @@ function getGroqClient() {
 }
 
 // --------------- POST /api/analyze ---------------
-router.post('/analyze', upload.single('resume'), async (req, res) => {
+router.post('/analyze', optionalAuth, upload.single('resume'), async (req, res) => {
   const startTime = Date.now();
 
   try {
@@ -118,6 +120,29 @@ router.post('/analyze', upload.single('resume'), async (req, res) => {
     const elapsed = ((Date.now() - startTime) / 1000).toFixed(2);
     console.log(` Analysis complete in ${elapsed}s`);
 
+    // Save to DB if user is authenticated
+    let savedId = null;
+    if (req.user) {
+      try {
+        const result = db
+          .prepare(
+            `INSERT INTO analyses (user_id, target_role, file_name, model, analysis)
+             VALUES (?, ?, ?, ?, ?)`
+          )
+          .run(
+            req.user.id,
+            targetRole,
+            req.file.originalname,
+            'openai/gpt-oss-120b',
+            JSON.stringify(analysis)
+          );
+        savedId = result.lastInsertRowid;
+        console.log(` Analysis saved to DB (id=${savedId}) for user ${req.user.email}`);
+      } catch (dbErr) {
+        console.warn('Failed to save analysis to DB:', dbErr.message);
+      }
+    }
+
     // Return the analysis
     res.json({
       success: true,
@@ -128,6 +153,7 @@ router.post('/analyze', upload.single('resume'), async (req, res) => {
         analysisTime: `${elapsed}s`,
         model: 'openai/gpt-oss-120b',
         provider: 'Groq',
+        savedId,
       },
     });
   } catch (error) {
