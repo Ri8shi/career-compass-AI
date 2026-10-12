@@ -72,7 +72,11 @@ const App = (() => {
   }
 
   // Boot the app
-  document.addEventListener('DOMContentLoaded', init);
+  document.addEventListener('DOMContentLoaded', () => {
+    init();
+    // Initialize auth state (navbar user pill / login links)
+    if (typeof initNavAuth === 'function') initNavAuth();
+  });
 
   return { showView, showError };
 })();

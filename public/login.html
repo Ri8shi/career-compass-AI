@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — Career Compass AI</title>
+  <meta name="description" content="Log in to Career Compass AI to access your saved analyses and personalized career insights." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/auth.css" />
+</head>
+
+<body class="auth-page">
+  <div class="auth-bg">
+    <div class="auth-bg__blob auth-bg__blob--1"></div>
+    <div class="auth-bg__blob auth-bg__blob--2"></div>
+  </div>
+
+  <div class="auth-container">
+    <div class="auth-card glass-card">
+      <!-- Logo -->
+      <a href="/" class="auth-logo">
+        <div class="auth-logo__icon">
+          <i data-lucide="compass"></i>
+        </div>
+        <div>
+          <span class="auth-logo__title">Career Compass <span class="auth-logo__ai">AI</span></span>
+        </div>
+      </a>
+
+      <div class="auth-header">
+        <h1 class="auth-title">Welcome back</h1>
+        <p class="auth-subtitle">Log in to access your analysis history</p>
+      </div>
+
+      <!-- Error/Success alert -->
+      <div class="auth-alert" id="authAlert" style="display:none;"></div>
+
+      <form class="auth-form" id="loginForm" novalidate>
+        <div class="form-group">
+          <label for="loginEmail" class="form-label">
+            <i data-lucide="mail"></i>
+            Email address
+          </label>
+          <input
+            type="email"
+            id="loginEmail"
+            name="email"
+            class="form-input"
+            placeholder="you@example.com"
+            autocomplete="email"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="loginPassword" class="form-label">
+            <i data-lucide="lock"></i>
+            Password
+          </label>
+          <div class="input-password-wrap">
+            <input
+              type="password"
+              id="loginPassword"
+              name="password"
+              class="form-input"
+              placeholder="••••••••"
+              autocomplete="current-password"
+              required
+            />
+            <button type="button" class="input-password-toggle" id="togglePassword" aria-label="Toggle password visibility">
+              <i data-lucide="eye" id="eyeIcon"></i>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--lg btn--full" id="loginBtn">
+          <i data-lucide="log-in"></i>
+          <span id="loginBtnText">Log In</span>
+          <div class="btn__loader" id="loginLoader" style="display:none;">
+            <div class="spinner"></div>
+          </div>
+        </button>
+      </form>
+
+      <div class="auth-divider">
+        <span>New to Career Compass?</span>
+      </div>
+
+      <a href="/register.html" class="btn btn--ghost btn--lg btn--full">
+        <i data-lucide="user-plus"></i>
+        Create an Account
+      </a>
+    </div>
+  </div>
+
+  <script src="/js/auth.js"></script>
+  <script>
+    lucide.createIcons();
+    initLoginPage();
+  </script>
+</body>
+
+</html>

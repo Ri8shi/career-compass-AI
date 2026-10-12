@@ -146,6 +146,7 @@ const Upload = (() => {
       const response = await fetch('/api/analyze', {
         method: 'POST',
         body: formData,
+        credentials: 'include',
       });
 
       const result = await response.json();
@@ -162,6 +163,13 @@ const Upload = (() => {
       App.showView('dashboard');
       Dashboard.render(result.data, result.meta);
       ExportManager.init(result.data, result.meta);
+
+      // If analysis was saved to DB, notify auth module
+      if (result.meta?.savedId) {
+        window.dispatchEvent(new CustomEvent('analysisSaved', {
+          detail: { targetRole: result.meta.targetRole }
+        }));
+      }
 
     } catch (err) {
       App.showView('error');

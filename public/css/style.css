@@ -170,6 +170,12 @@ body {
   text-transform: uppercase;
 }
 
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
 .main {
   position: relative;
   z-index: 1;

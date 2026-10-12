@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register — Career Compass AI</title>
+  <meta name="description"
+    content="Create a free Career Compass AI account to save your resume analyses and track your career progress." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/auth.css" />
+</head>
+
+<body class="auth-page">
+  <div class="auth-bg">
+    <div class="auth-bg__blob auth-bg__blob--1"></div>
+    <div class="auth-bg__blob auth-bg__blob--2"></div>
+  </div>
+
+  <div class="auth-container">
+    <div class="auth-card glass-card">
+      <!-- Logo -->
+      <a href="/" class="auth-logo">
+        <div class="auth-logo__icon">
+          <i data-lucide="compass"></i>
+        </div>
+        <div>
+          <span class="auth-logo__title">Career Compass <span class="auth-logo__ai">AI</span></span>
+        </div>
+      </a>
+
+      <div class="auth-header">
+        <h1 class="auth-title">Create account</h1>
+        <p class="auth-subtitle">Start saving your career analyses for free</p>
+      </div>
+
+      <!-- Error/Success alert -->
+      <div class="auth-alert" id="authAlert" style="display:none;"></div>
+
+      <form class="auth-form" id="registerForm" novalidate>
+        <div class="form-group">
+          <label for="regName" class="form-label">
+            <i data-lucide="user"></i>
+            Full name
+          </label>
+          <input type="text" id="regName" name="name" class="form-input" placeholder="Name here..." autocomplete="name"
+            required />
+        </div>
+
+        <div class="form-group">
+          <label for="regEmail" class="form-label">
+            <i data-lucide="mail"></i>
+            Email address
+          </label>
+          <input type="email" id="regEmail" name="email" class="form-input" placeholder="you@example.com"
+            autocomplete="email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="regPassword" class="form-label">
+            <i data-lucide="lock"></i>
+            Password
+            <span class="form-label__optional">(min. 6 characters)</span>
+          </label>
+          <div class="input-password-wrap">
+            <input type="password" id="regPassword" name="password" class="form-input" placeholder="••••••••"
+              autocomplete="new-password" required minlength="6" />
+            <button type="button" class="input-password-toggle" id="togglePassword"
+              aria-label="Toggle password visibility">
+              <i data-lucide="eye" id="eyeIcon"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="regPasswordConfirm" class="form-label">
+            <i data-lucide="shield-check"></i>
+            Confirm password
+          </label>
+          <input type="password" id="regPasswordConfirm" name="passwordConfirm" class="form-input"
+            placeholder="••••••••" autocomplete="new-password" required />
+        </div>
+
+        <!-- Password strength indicator -->
+        <div class="password-strength" id="passwordStrength" style="display:none;">
+          <div class="password-strength__bars">
+            <div class="password-strength__bar" id="strengthBar1"></div>
+            <div class="password-strength__bar" id="strengthBar2"></div>
+            <div class="password-strength__bar" id="strengthBar3"></div>
+            <div class="password-strength__bar" id="strengthBar4"></div>
+          </div>
+          <span class="password-strength__label" id="strengthLabel">Weak</span>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--lg btn--full" id="registerBtn">
+          <i data-lucide="user-plus"></i>
+          <span id="registerBtnText">Create Account</span>
+          <div class="btn__loader" id="registerLoader" style="display:none;">
+            <div class="spinner"></div>
+          </div>
+        </button>
+      </form>
+
+      <div class="auth-divider">
+        <span>Already have an account?</span>
+      </div>
+
+      <a href="/login.html" class="btn btn--ghost btn--lg btn--full">
+        <i data-lucide="log-in"></i>
+        Log In
+      </a>
+    </div>
+  </div>
+
+  <script src="/js/auth.js"></script>
+  <script>
+    lucide.createIcons();
+    initRegisterPage();
+  </script>
+</body>
+
+</html>
